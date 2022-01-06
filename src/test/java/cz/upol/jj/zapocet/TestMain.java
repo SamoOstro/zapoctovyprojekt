@@ -1,11 +1,10 @@
-import cz.upol.jj.zapocet.Klub;
-import cz.upol.jj.zapocet.Liga;
+package cz.upol.jj.zapocet;
+
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class TestMain {
     public Liga nahrajKluby(int pocet) throws IOException {
@@ -26,16 +25,6 @@ public class TestMain {
         return liga;
     }
 
-//    private Liga nahrajKluby() {
-//        Liga liga = new Liga(5);
-//        liga.pridajKlubDoTabulky(new Klub("ŠK ZEMPLÍN Trebišov"));
-//        liga.pridajKlubDoTabulky(new Klub("Tatran Prešov"));
-//        liga.pridajKlubDoTabulky(new Klub("ŠKP Bratislava"));
-//        liga.pridajKlubDoTabulky(new Klub("HK Košice"));
-//        liga.pridajKlubDoTabulky(new Klub("Šaľa"));
-//        return liga;
-//    }
-
     @Test
     public void kontrolaPoctuKlubov() throws IOException {
         Liga slovakLiga = nahrajKluby(5);
@@ -53,14 +42,14 @@ public class TestMain {
     public void kontrolaLigy() throws IOException {
         Liga slovakLiga = nahrajKluby(5);
         slovakLiga.nahrajRozpis();
-        assertEquals(slovakLiga.getNeodohraneZapasy().size(), 20);
+        assertEquals(slovakLiga.pocetZapasov(), 20);
         slovakLiga.odohrajZapas(1, 21, 15);
         slovakLiga.odohrajZapas(2, 15, 36);
         slovakLiga.odohrajZapas(3, 21, 22);
         slovakLiga.odohrajZapas(4, 17, 28);
         slovakLiga.odohrajZapas(5, 20, 20);
         slovakLiga.odohrajZapas(6, 20, 100);
-        assertEquals(slovakLiga.getOdohraneZapasy().size(), 6);
+        assertEquals(slovakLiga.pocetZapasov(true), 6);
         assertEquals(1, slovakLiga.getTabulka().get(0).getId());
         assertEquals(4, slovakLiga.getTabulka().get(0).getPocetBodov());
         slovakLiga.vypisTabulku();
@@ -72,11 +61,11 @@ public class TestMain {
     public void kontrolaNacitaniaRozpisu() throws IOException {
         Liga liga6 = nahrajKluby(6);
         liga6.nahrajRozpis();
-        assertEquals(30,liga6.getNeodohraneZapasy().size());
+        assertEquals(30,liga6.pocetZapasov(false));
 
         Liga liga10 = nahrajKluby(10);
         liga10.nahrajRozpis();
-        assertEquals(90,liga10.getNeodohraneZapasy().size());
+        assertEquals(90,liga10.pocetZapasov(false));
     }
 
 

@@ -1,4 +1,4 @@
-package zapocet;
+package cz.upol.jj.zapocet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,8 +12,6 @@ public class Main {
         boolean inProgress = true;
         int input;
         Liga liga = null;
-        Klub klub;
-        Zapas zapas;
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -58,19 +56,20 @@ public class Main {
                         if (liga == null) {
                             System.out.println("Liga nebola inicializovana, pouzi akciu 1");
                         } else {
+                            liga.vypisNeodohraneZapasy();
                             System.out.print("Zadaj cislo zapasu: ");
                             int cisloZapasu = Integer.parseInt(br.readLine());
-                            Optional<Zapas> optZapas = liga.getRozpisZapasov().stream().filter(zapas1 -> zapas1.getId() == cisloZapasu).findFirst();
-                            if (optZapas.isEmpty()) {
+                            Zapas zapas = liga.getZapas(cisloZapasu);
+                            if (zapas  == null) {
                                 System.out.println("Zapas neexistuje. Cisla zapasov su v rozsahu 1 - "
                                         + liga.pocetZapasov());
                                 break;
                             }
-                            if (optZapas.get().isSpracovany()) {
+                            if (zapas.isSpracovany()) {
                                 System.out.println("Zapas cislo" + cisloZapasu + "bol odohrany");
                                 break;
                             }
-                            optZapas.get().vypisZapas();
+                            zapas.vypisZapas();
                             System.out.print("Zadaj goly domacich: ");
                             int golyDom = Integer.parseInt(br.readLine());
                             System.out.print("Zadaj goly hosti: ");
@@ -91,7 +90,7 @@ public class Main {
                             System.out.println("Liga nebola inicializovana, pouzi akciu 1");
                         } else {
                             System.out.println("Zoznam zapasov: ");
-                            liga.vypisZapasy();
+                            liga.vypisVsetkyZapasy();
                         }
                         break;
                     case 5:

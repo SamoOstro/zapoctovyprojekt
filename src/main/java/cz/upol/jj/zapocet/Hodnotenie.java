@@ -1,4 +1,4 @@
-package zapocet;
+package cz.upol.jj.zapocet;
 
 public enum Hodnotenie {
     VYHRA(2),

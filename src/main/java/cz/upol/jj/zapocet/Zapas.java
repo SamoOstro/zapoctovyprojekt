@@ -1,4 +1,4 @@
-package zapocet;
+package cz.upol.jj.zapocet;
 
 public class Zapas {
     private static int counter = 1;
@@ -19,6 +19,34 @@ public class Zapas {
         this.golyDomaci = 0;
         this.golyHostia = 0;
         this.spracovany = false;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getKolo() {
+        return kolo;
+    }
+
+    public Klub getDomaci() {
+        return domaci;
+    }
+
+    public Klub getHostia() {
+        return hostia;
+    }
+
+    public int getGolyDomaci() {
+        return golyDomaci;
+    }
+
+    public int getGolyHostia() {
+        return golyHostia;
+    }
+
+    public boolean isSpracovany() {
+        return spracovany;
     }
 
     public boolean vyhodnot(int golyDomaci, int golyHostia) {
@@ -43,7 +71,8 @@ public class Zapas {
 
     public void vypisZapas() {
         if (this.isSpracovany()) {
-            System.out.println(this.getId() + ". "
+            System.out.println(this.getKolo() + ".kolo: "
+                    + this.getId() + ". "
                     + this.getDomaci().getMeno() + " : "
                     + this.getHostia().getMeno() + " "
                     + this.getGolyDomaci() + " : "
@@ -53,33 +82,5 @@ public class Zapas {
                     + this.getDomaci().getMeno() + " : "
                     + this.getHostia().getMeno());
         }
-    }
-
-    public Klub getDomaci() {
-        return domaci;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public Klub getHostia() {
-        return hostia;
-    }
-
-    public int getKolo() {
-        return kolo;
-    }
-
-    public int getGolyDomaci() {
-        return golyDomaci;
-    }
-
-    public int getGolyHostia() {
-        return golyHostia;
-    }
-
-    public boolean isSpracovany() {
-        return spracovany;
     }
 }
