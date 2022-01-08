@@ -16,6 +16,18 @@ public class Klub {
         this.meno = meno;
     }
 
+    public Klub(int id, String meno, int pocetBodov, int pocetVyhier, int pocetRemiz, int pocetPrehier,
+                int streleneGoly, int inkasovaneGoly) {
+        this.id = id;
+        this.meno = meno;
+        this.pocetBodov = pocetBodov;
+        this.pocetVyhier = pocetVyhier;
+        this.pocetRemiz = pocetRemiz;
+        this.pocetPrehier = pocetPrehier;
+        this.streleneGoly = streleneGoly;
+        this.inkasovaneGoly = inkasovaneGoly;
+    }
+
     public int getId() {
         return id;
     }

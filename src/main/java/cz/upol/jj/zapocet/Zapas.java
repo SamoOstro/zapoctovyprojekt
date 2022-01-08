@@ -21,6 +21,16 @@ public class Zapas {
         this.spracovany = false;
     }
 
+    public Zapas(int id, int kolo, Klub domaci, Klub hostia,  int golyDomaci, int golyHostia, boolean spracovany) {
+        this.id = id;
+        this.domaci = domaci;
+        this.hostia = hostia;
+        this.kolo = kolo;
+        this.golyDomaci = golyDomaci;
+        this.golyHostia = golyHostia;
+        this.spracovany = spracovany;
+    }
+
     public int getId() {
         return id;
     }
@@ -78,7 +88,8 @@ public class Zapas {
                     + this.getGolyDomaci() + " : "
                     + this.getGolyHostia());
         } else {
-            System.out.println(this.getId() + ". "
+            System.out.println(this.getKolo() + ".kolo: "
+                    + this.getId() + ". "
                     + this.getDomaci().getMeno() + " : "
                     + this.getHostia().getMeno());
         }

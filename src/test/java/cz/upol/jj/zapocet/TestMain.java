@@ -41,7 +41,7 @@ public class TestMain {
     @Test
     public void kontrolaLigy() throws IOException {
         Liga slovakLiga = nahrajKluby(5);
-        slovakLiga.nahrajRozpis();
+        slovakLiga.inicializujRozpis();
         assertEquals(slovakLiga.pocetZapasov(), 20);
         slovakLiga.odohrajZapas(1, 21, 15);
         slovakLiga.odohrajZapas(2, 15, 36);
@@ -54,17 +54,17 @@ public class TestMain {
         assertEquals(4, slovakLiga.getTabulka().get(0).getPocetBodov());
         slovakLiga.vypisTabulku();
 
-        slovakLiga.nahrajRozpis();
+        slovakLiga.inicializujRozpis();
     }
 
     @Test
     public void kontrolaNacitaniaRozpisu() throws IOException {
         Liga liga6 = nahrajKluby(6);
-        liga6.nahrajRozpis();
+        liga6.inicializujRozpis();
         assertEquals(30,liga6.pocetZapasov(false));
 
         Liga liga10 = nahrajKluby(10);
-        liga10.nahrajRozpis();
+        liga10.inicializujRozpis();
         assertEquals(90,liga10.pocetZapasov(false));
     }
 
